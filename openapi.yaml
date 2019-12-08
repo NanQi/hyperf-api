@@ -1,0 +1,39 @@
+openapi: 3.0.0
+info:
+  title: API文档
+  description: 这是公司API接口文档，只在开发和测试环境部署，请勿公开此地址
+  version: 1.0.0
+servers:
+  -
+    url: 'http://mining.test/api/'
+    description: 开发
+  -
+    url: 'http://47.111.142.19:81/api/'
+    description: 测试
+paths:
+  /app/share:
+    post:
+      tags:
+        - 应用
+      summary: 分享（弃用）
+      description: 分享
+      requestBody:
+        description: 参数
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                type:
+                  description: 1.分享APP（暂时不用）；2.分享邀请码（暂时不用）；3.分享视频；
+                  type: string
+                task_id:
+                  description: 任务ID
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 请求成功
+externalDocs:
+  description: 项目开发规范
+  url: 'http://47.111.142.19:82/index.php?m=doc&f=view&docID=5'
