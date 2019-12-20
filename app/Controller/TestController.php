@@ -10,7 +10,6 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
 
-
 namespace App\Controller;
 
 use App\Request\FooRequest;
@@ -27,7 +26,7 @@ use App\Middleware\AuthMiddleware;
 use PDepend\Util\Log;
 
 /**
- * @Controller
+ * @Controller(prefix="v1/test")
  * @Middleware(AuthMiddleware::class)
  * Class TestController
  * @package App\Controller
@@ -80,7 +79,6 @@ class TestController extends AbstractController
      */
     public function log()
     {
-        Log::log('log');
         return 'log';
     }
 
@@ -94,9 +92,12 @@ class TestController extends AbstractController
 
     /**
      * @PostMapping(path="foo")
+     * @param FooRequest $request
      */
     public function foo(FooRequest $request)
     {
-        return 'foo';
+        $this->retError(411, 'test');
+
+        return $this->response->json(['name' => 'foo5']);
     }
 }

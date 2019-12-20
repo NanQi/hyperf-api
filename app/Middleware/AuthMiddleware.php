@@ -25,7 +25,6 @@ class AuthMiddleware implements MiddlewareInterface
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        Log::log('middleware');
         return $handler->handle($request);
     }
 }

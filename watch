@@ -17,6 +17,8 @@ const EXCLUDE_DIR = ['vendor'];
 const ENTRY_POINT_FILE = './bin/hyperf.php';
 # PID File Path PID文件路径
 const PID_FILE_PATH = './runtime/hyperf.pid';
+# 代理文件路径
+const PROXY_FILE_PATH = './vendor/bin/init-proxy.sh';
 # Scan Interval 扫描间隔（毫秒，默认2000）
 const SCAN_INTERVAL = 2000;
 
@@ -110,6 +112,8 @@ function serve(Process $serve)
     $opt = getopt('c');
     # if (isset($opt['c'])) echo exec(PHP . ' ' . ENTRY_POINT_FILE . ' di:init-proxy') . '..' . PHP_EOL;
     if (isset($opt['c'])) del_dir('./runtime/container');
+
+    shell_exec('sh ' . PROXY_FILE_PATH);
     $serve->exec(PHP, [ENTRY_POINT_FILE, 'start']);
 }
 

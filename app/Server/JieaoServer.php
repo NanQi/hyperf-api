@@ -16,15 +16,9 @@ class JieaoServer {
     {
         //设置进程名
         cli_set_process_title("ynyn");
-
-        Log::log('onStart:ynyn');
     }
 
     public function onWorkerStart(Server $serv)
     {
-        require BASE_PATH . '/vendor/autoload.php';
-
-//        require BASE_PATH . '/vendor/autoload.php';
-        Log::log('onWorkerStart:ynyn');
     }
 }

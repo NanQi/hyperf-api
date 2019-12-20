@@ -11,13 +11,15 @@ declare(strict_types=1);
  */
 
 use App\Exception\Handler\AppExceptionHandler;
-use Hyperf\Validation\ValidationExceptionHandler;
+use App\Exception\Handler\BusinessExceptionHandler;
+use App\Exception\Handler\ValidationExceptionHandler;
 
 return [
     'handler' => [
         'http' => [
-            AppExceptionHandler::class,
             ValidationExceptionHandler::class,
+            BusinessExceptionHandler::class,
+            AppExceptionHandler::class,
         ],
     ],
 ];
