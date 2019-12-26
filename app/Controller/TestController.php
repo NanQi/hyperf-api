@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Request\FooRequest;
+use App\Service\JwtService;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\HttpServer\Annotation\Controller;
@@ -24,15 +25,19 @@ use Hyperf\Redis\RedisFactory;
 use Hyperf\Snowflake\IdGeneratorInterface;
 use App\Middleware\AuthMiddleware;
 use PDepend\Util\Log;
+use Phper666\JwtAuth\Jwt;
 
 /**
  * @Controller(prefix="v1/test")
- * @Middleware(AuthMiddleware::class)
  * Class TestController
  * @package App\Controller
  */
 class TestController extends AbstractController
 {
+    /**
+     * @GetMapping(path="reload")
+     * @return string
+     */
     public function reload()
     {
         return '5';
@@ -75,11 +80,20 @@ class TestController extends AbstractController
 
     /**
      * @GetMapping(path="log")
-     * @return string
      */
-    public function log()
+    public function log(JwtService $jwtService)
     {
-        return 'log';
+        $ret = $jwtService->checkToken();
+        return $ret;
+    }
+
+    /**
+     * @GetMapping(path="token")
+     */
+    public function token(JwtService $jwtService)
+    {
+        $token = $jwtService->getToken(25);
+        return $token;
     }
 
     /**

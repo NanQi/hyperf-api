@@ -15,7 +15,6 @@ use Hyperf\Validation\Middleware\ValidationMiddleware;
 
 return [
     'http' => [
-        AuthMiddleware::class,
         ValidationMiddleware::class,
     ],
 ];
