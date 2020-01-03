@@ -4,15 +4,24 @@ declare(strict_types=1);
 
 namespace App\Request;
 
-use Hyperf\Validation\Request\FormRequest;
-
-class FooRequest extends FormRequest
+class FooRequest extends BaseRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
+        $foo = $this->request->input('foo');
+        $bar = $this->request->input('bar');
+
+        if ($foo == '123') {
+            $this->retError(403, 'foo不能为123');
+        }
+
+        if ($bar == '234') {
+            $this->retError(403, 'bar不能为234');
+        }
+
         return true;
     }
 

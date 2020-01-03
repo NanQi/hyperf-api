@@ -39,7 +39,7 @@ namespace App\Controller;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\Snowflake\IdGeneratorInterface;
 
-class IndexController extends AbstractController
+class IndexController extends BaseController
 {
     /**
      * @Inject

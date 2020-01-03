@@ -14,6 +14,7 @@ namespace App\Controller;
 
 use App\Request\FooRequest;
 use App\Service\JwtService;
+use Hyperf\Contract\ConfigInterface;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\HttpServer\Annotation\Controller;
@@ -25,14 +26,13 @@ use Hyperf\Redis\RedisFactory;
 use Hyperf\Snowflake\IdGeneratorInterface;
 use App\Middleware\AuthMiddleware;
 use PDepend\Util\Log;
-use Phper666\JwtAuth\Jwt;
 
 /**
  * @Controller(prefix="v1/test")
  * Class TestController
  * @package App\Controller
  */
-class TestController extends AbstractController
+class TestController extends BaseController
 {
     /**
      * @GetMapping(path="reload")
@@ -110,8 +110,15 @@ class TestController extends AbstractController
      */
     public function foo(FooRequest $request)
     {
-        $this->retError(411, 'test');
-
         return $this->response->json(['name' => 'foo5']);
+    }
+
+    /**
+     * @GetMapping(path="config")
+     */
+    public function config()
+    {
+        $config = $this->container->get(ConfigInterface::class);
+        var_dump(array_keys($config->get('redis')));
     }
 }
