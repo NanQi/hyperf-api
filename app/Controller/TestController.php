@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Model\UserModel;
 use App\Request\FooRequest;
 use App\Service\JwtService;
 use Hyperf\Contract\ConfigInterface;
@@ -26,6 +27,7 @@ use Hyperf\Redis\RedisFactory;
 use Hyperf\Snowflake\IdGeneratorInterface;
 use App\Middleware\AuthMiddleware;
 use PDepend\Util\Log;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * @Controller(prefix="v1/test")
@@ -107,6 +109,7 @@ class TestController extends BaseController
     /**
      * @PostMapping(path="foo")
      * @param FooRequest $request
+     * @return ResponseInterface
      */
     public function foo(FooRequest $request)
     {

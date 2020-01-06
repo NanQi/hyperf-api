@@ -14,8 +14,6 @@ class JieaoServer {
 
     public function onStart()
     {
-        //设置进程名
-        cli_set_process_title("ynyn");
     }
 
     public function onWorkerStart(Server $serv)
