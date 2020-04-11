@@ -17,6 +17,10 @@ return [
         ],
         'ignore_annotations' => [
             'mixin',
+            'OA\Get',
+            'OA\Response',
+            'OA\JsonContent',
+            'OA\Property',
         ],
     ],
 ];
