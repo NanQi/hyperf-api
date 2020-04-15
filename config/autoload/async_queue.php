@@ -17,6 +17,9 @@ return [
         'timeout' => 2,
         'retry_seconds' => 5,
         'handle_timeout' => 10,
-        'processes' => 1,
+        'processes' => 5,
+        'concurrent' => [
+            'limit' => 5,
+        ],
     ],
 ];
