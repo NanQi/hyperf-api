@@ -41,7 +41,8 @@
         "hyperf/swagger": "^1.1",
         "hyperf/validation": "^1.1",
         "ext-json": "*",
-        "lcobucci/jwt": "^3.3"
+        "lcobucci/jwt": "^3.3",
+        "hyperf/elasticsearch": "^1.1"
     },
     "require-dev": {
         "swoft/swoole-ide-helper": "^4.2",
