@@ -51,11 +51,10 @@ class UploadController extends BaseController
      */
     public function oss()
     {
-        $accessKeyId = "LTAI4FryGduyVpCZcdKQGFPw";
-        $accessKeySecret = "3VODZot4fG6LY60HznPHuc80BC2HTF";
-// Endpoint以杭州为例，其它Region请按实际情况填写。
-        $endpoint = "http://oss-cn-hangzhou.aliyuncs.com";
-        $bucket= "jieao-mining";
+        $accessKeyId = env('OSS_ACCESS_KEY');
+        $accessKeySecret = env('OSS_SECRET_KEY');
+        $endpoint = "http://" . env('OSS_ENDPOINT');
+        $bucket= env('OSS_BUCKET');
         $object = "hyperf-test";
         $securityToken = null;
 
