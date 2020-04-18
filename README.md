@@ -123,10 +123,22 @@ http://api.test
 
 根据实际业务选择Redis异步队列或AMQP,或两者结合使用
 参考文档 [异步队列](https://hyperf.wiki/#/zh-cn/async-queue)
-### 任务调度
+### 配置任务调度
+-  方式一
 
-统一使用XXL-JOB分布式任务调度平台
+~~~
+crontab -e
+~~~
 
+尾部增加配置
+~~~
+* * * * * cd /home/vagrant/code/hyperf-api && php bin/hyperf.php demo:command >> /dev/null 2>&1
+~~~
+对应文件：app/Command/TestCommand.php
+-  方式二
+config/autoload/crontab.php
+-  方式三
+App\Task\DemoTask
 ### 更新框架
 ~~~
 composer update 

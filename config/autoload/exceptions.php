@@ -12,14 +12,15 @@ declare(strict_types=1);
 use App\Exception\Handler\ValidationExceptionHandler;
 use App\Exception\Handler\AppExceptionHandler;
 use App\Exception\Handler\BusinessExceptionHandler;
-
-
+use App\Exception\Handler\ValidationExceptionHandler;
+use App\Exception\Handler\JwtExceptionHandler;
 return [
     'handler' => [
         'http' => [
             ValidationExceptionHandler::class,
             BusinessExceptionHandler::class,
             AppExceptionHandler::class,
+            JwtExceptionHandler::class,
         ],
     ],
 ];
