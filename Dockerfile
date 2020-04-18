@@ -56,6 +56,6 @@ RUN composer install --no-dev \
     && composer dump-autoload -o \
     && composer init-proxy
 
-EXPOSE 9501
+EXPOSE 9502
 
 ENTRYPOINT ["php", "/opt/www/bin/hyperf.php", "start"]
