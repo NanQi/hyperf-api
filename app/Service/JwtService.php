@@ -7,6 +7,7 @@ declare(strict_types=1);
 
 namespace App\Service;
 
+use Hyperf\Config\Annotation\Value;
 use Hyperf\Contract\StdoutLoggerInterface;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Contract\RequestInterface;
@@ -19,10 +20,17 @@ use Lcobucci\JWT\Signer\Key;
 class JwtService extends BaseService {
 
     protected $header = 'authorization';
-
     protected $prefix = 'bearer';
-    private $sign_key = "wd2RknfaQEm9FdYATB1h0Azh9nKYMJACyyVf5kSGWGbLCROwvOjk7w09JJ1h1n56";
-    private $token_ttl = 3600 * 24 * 30;
+
+    /**
+     * @Value("jwt.ttl")
+     */
+    private $token_ttl;
+
+    /**
+     * @Value("jwt.secret")
+     */
+    private $sign_key;
 
     /**
      * @Inject
@@ -38,6 +46,7 @@ class JwtService extends BaseService {
 
     public function getToken($uid, $issuedAt = null, $ttl = null)
     {
+        var_dump("uid=".$uid);
         $issuedAt = $issuedAt ?? time();
         $ttl = $ttl ?? $this->token_ttl;
 
@@ -48,8 +57,7 @@ class JwtService extends BaseService {
             ->expiresAt($issuedAt + $ttl)
             ->withClaim('uid', $uid)
             ->getToken($signer, new Key($this->sign_key));
-
-        return $token;
+        return $token.'';
     }
 
     private function parse()
@@ -83,6 +91,6 @@ class JwtService extends BaseService {
         }
 
         $this->logger->info('check:' . $uid);
-        return true;
+        return $uid;
     }
 }
