@@ -42,7 +42,10 @@
         "hyperf/validation": "^1.1",
         "ext-json": "*",
         "lcobucci/jwt": "^3.3",
-        "hyperf/elasticsearch": "^1.1"
+        "hyperf/elasticsearch": "^1.1",
+        "hyperf/filesystem": "^1.1",
+        "overtrue/flysystem-qiniu": "^1.0",
+        "xxtime/flysystem-aliyun-oss": "^1.5"
     },
     "require-dev": {
         "swoft/swoole-ide-helper": "^4.2",
