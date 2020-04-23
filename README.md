@@ -188,3 +188,23 @@ www  WEB部署目录（或者子目录）
 ├─README.md             README 文件
 ├─watch                 热重载
 ~~~
+
+
+### 配置swagger文档
+
+1、打开项目配置文件
+sudo vim /etc/nginx/sites-available/hyperf-api.test
+
+2、增加如下代码
+location /file/ {
+          alias /home/vagrant/Code/hyperf-api/doc/;
+      }
+      
+3、重启nginx
+sudo nginx -s reload
+
+4、生成接口文档
+php bin/hyperf.php swagger:gen -o ./doc/
+
+5、访问接口文档
+项目/file/dist/index.html

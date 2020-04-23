@@ -46,7 +46,8 @@
         "hyperf/filesystem": "^1.1",
         "overtrue/flysystem-qiniu": "^1.0",
         "xxtime/flysystem-aliyun-oss": "^1.5",
-        "hyperf/crontab": "^1.1"
+        "hyperf/crontab": "^1.1",
+        "hyperf/amqp": "^1.1"
     },
     "require-dev": {
         "swoft/swoole-ide-helper": "^4.2",

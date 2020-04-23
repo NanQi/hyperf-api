@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>豪多多注册</title>
+    <style>
+        @font-face {
+            font-family: 'iconfont';
+            src: url('https://at.alicdn.com/t/font_1486569_c7azckybnqs.eot');
+            src: url('https://at.alicdn.com/t/font_1486569_c7azckybnqs.eot?#iefix') format('embedded-opentype'), url('https://at.alicdn.com/t/font_1486569_c7azckybnqs.woff2') format('woff2'), url('https://at.alicdn.com/t/font_1486569_c7azckybnqs.woff') format('woff'), url('https://at.alicdn.com/t/font_1486569_c7azckybnqs.ttf') format('truetype'), url('https://at.alicdn.com/t/font_1486569_c7azckybnqs.svg#iconfont') format('svg')
+        }
+        
+        .iconfont {
+            font-family: "iconfont"!important;
+            font-size: 21px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: .2px;
+            -moz-osx-font-smoothing: grayscale;
+            color: #9fb2c7
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: PingFang SC;
+            font-size: 14px;
+            border: 0;
+            outline: 0
+        }
+        
+        .content {
+            padding: 0 36px
+        }
+        
+        .top img {
+            width: 100%
+        }
+        
+        .item {
+            width: 100%;
+            height: 54px;
+            border-bottom: 1px solid #d9e2e9;
+            line-height: 54px;
+            color: #333;
+            position: relative
+        }
+        
+        .item input {
+            height: 21px;
+            line-height: 21px;
+            vertical-align: middle;
+            width: 200px
+        }
+        
+        .item span {
+            height: 21px;
+            line-height: 21px;
+            vertical-align: middle
+        }
+        
+        input::-webkit-input-placeholder {
+            color: #b6c2ce
+        }
+        
+        #code {
+            position: absolute;
+            width: 90px;
+            height: 24px;
+            background: rgba(31, 18, 94, 1);
+            border-radius: 12px;
+            color: #fbf533;
+            text-align: center;
+            line-height: 24px;
+            top: 15px
+        }
+        
+        button {
+            width: 100%;
+            height: 44px;
+            background: rgba(31, 18, 94, 1);
+            border-radius: 22px;
+            line-height: 44px;
+            text-align: center;
+            color: #fbf533;
+            margin-top: 20px;
+            font-size: 17px
+        }
+        
+        .skip {
+            display: block;
+            text-decoration: none;
+            color: rgba(31, 18, 94, 1);
+            width: 30px;
+            line-height: 20px;
+            text-align: center;
+            border-bottom: 1px solid #151723;
+            margin: 20px auto 40px
+        }
+        
+        .msg {
+            width: 100%;
+            height: 40px;
+            position: fixed;
+            top: 250px;
+            display: none
+        }
+        
+        .msg p {
+            width: 200px;
+            height: 40px;
+            text-align: center;
+            color: #fff;
+            font-size: 16px;
+            line-height: 40px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+            margin: 0 auto
+        }
+        
+        .confirm {
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            position: fixed;
+            z-index: 99;
+            top: 0;
+            display: none
+        }
+        
+        .confirm>div {
+            width: 250px;
+            height: 150px;
+            background: #fff;
+            z-index: 999;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -150px;
+            margin-top: -100px;
+            border-radius: 10px;
+            padding: 25px;
+            color: #333;
+            font-size: 14px
+        }
+        
+        .confirm .title {
+            font-size: 16px;
+            font-family: PingFang SC;
+            font-weight: bold;
+            line-height: 22px;
+            margin-bottom: 25px
+        }
+        
+        .confirm .btn {
+            background: #2483ff;
+            border-radius: 3px;
+            height: 40px;
+            line-height: 40px;
+            color: #fff
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="gt.js"></script>
+    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+    <script>
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 3.75 + "px";
+    </script>
+</head>
+
+<body>
+    <div class="">
+        <div class="top">
+            <img src="http://haoduoduo.oss-cn-hangzhou.aliyuncs.com/configs/images/201912032317a33f98635d453e17b0505bf41afd.png" alt="">
+        </div>
+        <div class="content">
+            <p style="font-size: 21px;margin-bottom: 5px;">注册</p>
+            <div class="item">
+                <span class="iconfont">&#xe609;</span>
+                <input type="text" placeholder="填写手机号" class="phone">
+            </div>
+            <div class="item">
+                <span class="iconfont">&#xe621;</span>
+                <input type="text" placeholder="手机验证码" value="" class="phonecode">
+                <span id="code">获取验证码</span>
+            </div>
+            <div class="item">
+                <span class="iconfont">&#xe60f;</span>
+                <input type="password" placeholder="6-20位数字和字母组合密码" value="" class="password">
+            </div>
+            <div class="item">
+                邀请码：<span class="invite-code"></span>
+            </div>
+            <button>立即注册</button>
+            <div style="padding: 10px 0;">
+                <a href="http://download-hdd.eenchant.com/download.html" class="skip">跳过</a>
+            </div>
+
+        </div>
+        <div class="msg">
+            <p>手机格式不正确</p>
+        </div>
+        <div class="confirm">
+            <div>
+                <p class="title">邀请注册提醒</p>
+                <p class="tips_msg">注册信息已提交<br>待邀请人确认通过后即注册成功！
+                </p>
+                <button class="btn" id="confirm_btn">我知道了</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    $(function() {
+        var url = "https://haoduoduo.jieaochina.top/api"
+
+        function getUrl(name) {
+            if (!name) return null;
+            // 查询参数：先通过search取值，如果取不到就通过hash来取
+            var after = window.location.search;
+            after = after.substr(1) || window.location.hash.split('?')[1];
+            // 地址栏URL没有查询参数，返回空
+            if (!after) return null;
+            // 如果查询参数中没有"name"，返回空
+            if (after.indexOf(name) === -1) return null;
+
+            var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
+            // 当地址栏参数存在中文时，需要解码，不然会乱码
+            var r = decodeURI(after).match(reg);
+            // 如果url中"name"没有值，返回空
+            if (!r) return null;
+
+            return r[2];
+        }
+        var parmas = getUrl('invite_code')
+        var geetest_uid = ""
+        var time = 60;
+        //倒计时
+        function getRandomCode() {
+            if (time === 0) {
+                time = 60;
+                $('#code').text("获取验证码");
+                return;
+            } else {
+                time--;
+                $('#code').text(time + 's');
+            }
+            setTimeout(function() {
+                getRandomCode();
+            }, 1000);
+        }
+        //随机数
+        function random_char() {
+            var random_charset = [
+                '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+                'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+            ];
+            var res = "";
+            for (var i = 0; i < 16; i++) {
+                var id = Math.ceil(Math.random() * 35);
+                res += random_charset[id];
+            }
+            return res;
+        }
+        $(".invite-code").html(parmas)
+        $(".phone").blur(function() {
+            if (!(/^1[3456789]\d{9}$/.test($(".phone").val()))) {
+                $(".msg>p").html("手机格式不正确")
+                $(".msg").show()
+                clearTimeout(timer)
+                var timer = setTimeout(function() {
+                    $(".msg").hide()
+                }, 1000)
+            }
+        })
+        $(".password").blur(function() {
+            if (!(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/.test($(".password").val()))) {
+                $(".msg>p").html("密码格式不正确")
+                $(".msg").show()
+                clearTimeout(timer)
+                var timer = setTimeout(function() {
+                    $(".msg").hide()
+                }, 1000)
+            }
+        })
+        $('#confirm_btn').click(function(event) {
+            event.stopPropagation()
+            window.location.href = "http://download-hdd.eenchant.com/download.html"
+        })
+        $('.confirm').click(function(event) {
+            // event.stopPropagation()
+            $('.confirm ').hide()
+        })
+        var handler = function(captchaObj) {
+            captchaObj.onReady(function() {
+                $("#wait").hide();
+            }).onSuccess(function() {
+                var result = captchaObj.getValidate();
+                if (!result) {
+                    return alert('请完成验证');
+                }
+                $.ajax({
+                    url: url + '/gee_test/verif2',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        geetest_uid: geetest_uid,
+                        is_sms: "1",
+                        phone: $(".phone").val(),
+                        type: "register",
+                        geetest_challenge: result.geetest_challenge,
+                        geetest_validate: result.geetest_validate,
+                        geetest_seccode: result.geetest_seccode
+                    },
+                    success: function(data) {
+                        getRandomCode()
+                        if (data.status === 'success') {
+                            setTimeout(function() {
+                                alert('验证成功');
+                            }, 1500);
+                        } else if (data.status === 'fail') {
+                            setTimeout(function() {
+                                alert('验证失败，请完成验证');
+                                captchaObj.reset();
+                            }, 1500);
+                        }
+                    }
+                });
+            });
+            $('#code').click(function() {
+                if (!(/^1[3456789]\d{9}$/.test($(".phone").val()))) {
+                    $(".msg>p").html("手机格式不正确")
+                    $(".msg").show()
+                    clearTimeout(timer)
+                    var timer = setTimeout(function() {
+                        $(".msg").hide()
+                    }, 1500)
+                } else {
+                    $.post(url + '/sms/send_code', {
+                        "phone": $(".phone").val(),
+                        "type": "register"
+                    }, function(data) {
+                        if (!data.flg) {
+                            captchaObj.verify()
+                        } else {
+                            getRandomCode()
+                        }
+
+                    })
+                }
+            })
+        };
+
+        $.ajax({
+            url: url + '/gee_test/verif1',
+            type: "get",
+            dataType: "json",
+            success: function(data) {
+                geetest_uid = data.geetest_uid
+                    // 调用 initGeetest 进行初始化
+                    // 参数1：配置参数
+                    // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它调用相应的接口
+                initGeetest({
+                    gt: data.gt,
+                    challenge: data.challenge,
+                    offline: !data.success, // 表示用户后台检测极验服务器是否宕机
+                    new_captcha: data.new_captcha, // 用于宕机时表示是新验证码的宕机
+                    timeout: '5000',
+                    product: "bind", // 产品形式，包括：float，popup
+                    width: "300px",
+                    https: true
+                }, handler);
+            }
+        });
+        var __encode = 'sojson.com',
+            _0xb483 = ["\x5F\x64\x65\x63\x6F\x64\x65", "\x68\x74\x74\x70\x3A\x2F\x2F\x77\x77\x77\x2E\x73\x6F\x6A\x73\x6F\x6E\x2E\x63\x6F\x6D\x2F\x6A\x61\x76\x61\x73\x63\x72\x69\x70\x74\x6F\x62\x66\x75\x73\x63\x61\x74\x6F\x72\x2E\x68\x74\x6D\x6C"];
+        (function(_0xd642x1) {
+            _0xd642x1[_0xb483[0]] = _0xb483[1]
+        })(window);
+        var __Ox7bd64 = ["\x76\x61\x6C", "\x2E\x70\x68\x6F\x6E\x65", "\x74\x65\x73\x74", "\x73\x68\x6F\x77", "\x2E\x6D\x73\x67", "\x68\x69\x64\x65", "\x2E\x70\x68\x6F\x6E\x65\x63\x6F\x64\x65", "", "\u8BF7\u8F93\u5165\u9A8C\u8BC1\u7801", "\x68\x74\x6D\x6C", "\x2E\x6D\x73\x67\x3E\x70", "\x2E\x70\x61\x73\x73\x77\x6F\x72\x64", "\u5BC6\u7801\u683C\u5F0F\u4E0D\u6B63\u786E", "\x6C\x6F\x67\x69\x6E\x70\x77\x64", "\x70\x61\x72\x73\x65", "\x6D\x65\x73\x73\x61\x67\x65", "\x72\x65\x73\x70\x6F\x6E\x73\x65\x54\x65\x78\x74", "\x65\x72\x72\x6F\x72", "\x2F\x6D\x6F\x62\x69\x6C\x65\x5F\x72\x65\x67\x69\x73\x74\x65\x72", "\x77\x65\x62", "\x68\x64\x64", "\x74\x6F\x55\x70\x70\x65\x72\x43\x61\x73\x65", "\x69\x6E\x76\x69\x74\x65\x5F\x63\x6F\x64\x65\x3D", "\x26\x6C\x6F\x67\x69\x6E\x5F\x70\x61\x73\x73\x77\x6F\x72\x64\x3D", "\x26\x70\x68\x6F\x6E\x65\x3D", "\x26\x72\x65\x67\x69\x73\x74\x65\x72\x5F\x74\x79\x70\x65\x3D\x77\x65\x62\x26\x73\x69\x67\x6E\x5F\x67\x75\x69\x64\x3D", "\x26\x73\x69\x67\x6E\x5F\x6B\x65\x79\x3D\x68\x64\x64\x26\x73\x69\x67\x6E\x5F\x74\x69\x6D\x65\x73\x74\x61\x6D\x70\x3D", "\x26\x73\x6D\x73\x5F\x63\x6F\x64\x65\x3D", "\x26\x73\x69\x67\x6E\x5F\x6B\x65\x79\x3D\x68\x64\x64\x77\x65\x62\x73\x69\x67\x6E\x6B\x65\x79", "\x2E\x63\x6F\x6E\x66\x69\x72\x6D", "\x6A\x73\x6F\x6E", "\x70\x6F\x73\x74", "\x63\x6C\x69\x63\x6B", "\x62\x75\x74\x74\x6F\x6E"];
+        $(__Ox7bd64[0x21])[__Ox7bd64[0x20]](function() {
+            if (!(/^1[3456789]\d{9}$/ [__Ox7bd64[0x2]]($(__Ox7bd64[0x1])[__Ox7bd64[0x0]]()))) {
+                $(__Ox7bd64[0x4])[__Ox7bd64[0x3]]();
+                clearTimeout(_0xdc59x1);
+                var _0xdc59x1 = setTimeout(function() {
+                    $(__Ox7bd64[0x4])[__Ox7bd64[0x5]]()
+                }, 1500)
+            } else {
+                if ($(__Ox7bd64[0x6])[__Ox7bd64[0x0]]() == __Ox7bd64[0x7]) {
+                    $(__Ox7bd64[0xa])[__Ox7bd64[0x9]](__Ox7bd64[0x8]);
+                    $(__Ox7bd64[0x4])[__Ox7bd64[0x3]]();
+                    clearTimeout(_0xdc59x1);
+                    var _0xdc59x1 = setTimeout(function() {
+                        $(__Ox7bd64[0x4])[__Ox7bd64[0x5]]()
+                    }, 1500)
+                } else {
+                    if (!(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/ [__Ox7bd64[0x2]]($(__Ox7bd64[0xb])[__Ox7bd64[0x0]]()))) {
+                        $(__Ox7bd64[0xa])[__Ox7bd64[0x9]](__Ox7bd64[0xc]);
+                        $(__Ox7bd64[0x4])[__Ox7bd64[0x3]]();
+                        clearTimeout(_0xdc59x1);
+                        var _0xdc59x1 = setTimeout(function() {
+                            $(__Ox7bd64[0x4])[__Ox7bd64[0x5]]()
+                        }, 1000)
+                    } else {
+                        var _0xdc59x2 = md5($(__Ox7bd64[0xb])[__Ox7bd64[0x0]]() + __Ox7bd64[0xd]);
+                        var _0xdc59x3 = random_char();
+                        var _0xdc59x4 = (Date[__Ox7bd64[0xe]](new Date()) / 1000).toString();
+                        $[__Ox7bd64[0x1f]](url + __Ox7bd64[0x12], {
+                            "\x70\x68\x6F\x6E\x65": $(__Ox7bd64[0x1])[__Ox7bd64[0x0]](),
+                            "\x73\x6D\x73\x5F\x63\x6F\x64\x65": $(__Ox7bd64[0x6])[__Ox7bd64[0x0]](),
+                            "\x6C\x6F\x67\x69\x6E\x5F\x70\x61\x73\x73\x77\x6F\x72\x64": _0xdc59x2,
+                            "\x69\x6E\x76\x69\x74\x65\x5F\x63\x6F\x64\x65": parmas,
+                            "\x72\x65\x67\x69\x73\x74\x65\x72\x5F\x74\x79\x70\x65": __Ox7bd64[0x13],
+                            sign_guid: _0xdc59x3,
+                            sign_timestamp: _0xdc59x4,
+                            sign_key: __Ox7bd64[0x14],
+                            sign: md5(`${__Ox7bd64[0x16]}${parmas}${__Ox7bd64[0x17]}${_0xdc59x2}${__Ox7bd64[0x18]}${$(__Ox7bd64[0x1])[__Ox7bd64[0x0]]()}${__Ox7bd64[0x19]}${_0xdc59x3}${__Ox7bd64[0x1a]}${_0xdc59x4}${__Ox7bd64[0x1b]}${$(__Ox7bd64[0x6])[__Ox7bd64[0x0]]()}${__Ox7bd64[0x1c]}`)[__Ox7bd64[0x15]]()
+                        }, function() {
+                            $(__Ox7bd64[0x1d])[__Ox7bd64[0x3]]();
+                            $(__Ox7bd64[0x1d])[__Ox7bd64[0x3]]()
+                        }, __Ox7bd64[0x1e])[__Ox7bd64[0x11]](function(_0xdc59x5) {
+                            $(__Ox7bd64[0xa])[__Ox7bd64[0x9]](JSON[__Ox7bd64[0xe]](_0xdc59x5[__Ox7bd64[0x10]])[__Ox7bd64[0xf]]);
+                            $(__Ox7bd64[0x4])[__Ox7bd64[0x3]]();
+                            clearTimeout(_0xdc59x1);
+                            var _0xdc59x1 = setTimeout(function() {
+                                $(__Ox7bd64[0x4])[__Ox7bd64[0x5]]()
+                            }, 1000)
+                        })
+                    }
+                }
+            }
+        })
+    })
+</script>
+
+</html>
