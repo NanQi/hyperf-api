@@ -7,7 +7,6 @@ declare(strict_types=1);
 
 namespace App\Server;
 
-use PDepend\Util\Log;
 use Swoole\Server;
 
 class JieaoServer {

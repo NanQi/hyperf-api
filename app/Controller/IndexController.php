@@ -74,16 +74,27 @@ class IndexController extends BaseController
 
     /**
      * @return array
+     * @throws \Exception
      */
     public function index()
     {
-        $user = $this->request->input('user', 'Hyperf');
-        $method = $this->request->getMethod();
+        $user = $this->request->input('name', 'nanqi');
+
+        $p_sleep = $this->request->input('sleep', '0');
+        if ($p_sleep) {
+            sleep((int)$p_sleep);
+        }
+
+        $p_except = $this->request->input('except', '0');
+        if ($p_except) {
+            throw new \Exception();
+        }
 
 
         return [
-            'method' => $method,
-            'message' => "Hello {$user}." . $this->idGenerator->generate(),
+            'message' => "hello {$user}",
+            'sleep' => $p_sleep,
+            'random' => rand(1, 100000),
         ];
     }
 }

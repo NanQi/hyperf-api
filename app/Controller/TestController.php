@@ -99,6 +99,15 @@ class TestController extends BaseController
     }
 
     /**
+     * @GetMapping(path="check")
+     */
+    public function checkToken(JwtService $jwtService)
+    {
+        $flg = $jwtService->checkToken();
+        return ['flg' => $flg];
+    }
+
+    /**
      * @PostMapping(path="post")
      */
     public function testPost()

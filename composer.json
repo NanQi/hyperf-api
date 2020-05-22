@@ -35,19 +35,18 @@
         "hyperf/process": "~1.1.0",
         "hyperf/redis": "~1.1.0",
         "hyperf/utils": "~1.1.0",
-        "hyperf/async-queue": "^1.1",
+        "hyperf/async-queue": "~1.1.0",
         "hyperf/model-cache": "~1.1.0",
         "hyperf/snowflake": "^1.1",
         "hyperf/swagger": "^1.1",
         "hyperf/validation": "^1.1",
-        "ext-json": "*",
-        "lcobucci/jwt": "^3.3",
         "hyperf/elasticsearch": "^1.1",
         "hyperf/filesystem": "^1.1",
         "overtrue/flysystem-qiniu": "^1.0",
         "xxtime/flysystem-aliyun-oss": "^1.5",
         "hyperf/crontab": "^1.1",
-        "hyperf/amqp": "^1.1"
+        "hyperf/amqp": "^1.1",
+        "lcobucci/jwt": "^3.3"
     },
     "require-dev": {
         "swoft/swoole-ide-helper": "^4.2",
@@ -57,6 +56,12 @@
         "doctrine/common": "^2.9",
         "phpstan/phpstan": "^0.11.2",
         "hyperf/testing": "~1.1.0"
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://mirrors.aliyun.com/composer/"
+        }
     },
     "suggest": {
         "ext-openssl": "Required to use HTTPS.",
