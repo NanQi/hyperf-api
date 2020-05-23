@@ -52,6 +52,12 @@
         "phpstan/phpstan": "^0.11.2",
         "hyperf/testing": "~1.1.0"
     },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://mirrors.aliyun.com/composer/"
+        }
+    },
     "suggest": {
         "ext-openssl": "Required to use HTTPS.",
         "ext-json": "Required to use JSON.",
