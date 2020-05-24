@@ -16,4 +16,9 @@ class UserClient extends BaseClient
         $body = $res->getBody();
         return $body->getContents();
     }
+
+    public function testFallback()
+    {
+        return "fallback2";
+    }
 }
