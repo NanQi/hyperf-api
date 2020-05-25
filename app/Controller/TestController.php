@@ -133,4 +133,21 @@ class TestController extends BaseController
         $config = $this->container->get(ConfigInterface::class);
         var_dump(array_keys($config->get('redis')));
     }
+
+    /**
+     * @GetMapping(path="test_file")
+     */
+    public function testFile()
+    {
+        $path = $this->request->input('path', "/mnt/data/");
+
+        $fileName = "test.csv";
+        $filePath = $path . $fileName;
+
+        $id = $this->snowflake();
+        file_put_contents($filePath, $id . PHP_EOL, FILE_APPEND);
+
+        $res = file_get_contents($filePath);
+        return $res;
+    }
 }
