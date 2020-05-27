@@ -36,9 +36,18 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Service\CircuitService;
+use Hyperf\CircuitBreaker\Annotation\CircuitBreaker;
 use Hyperf\Di\Annotation\Inject;
+use Hyperf\HttpServer\Annotation\Controller;
+use Hyperf\HttpServer\Annotation\GetMapping;
 use Hyperf\Snowflake\IdGeneratorInterface;
 
+/**
+ * @Controller(prefix="v1/index")
+ * Class IndexController
+ * @package App\Controller
+ */
 class IndexController extends BaseController
 {
     /**
@@ -78,7 +87,7 @@ class IndexController extends BaseController
      */
     public function index()
     {
-        $user = $this->request->input('name', 'nanqi');
+        $user = $this->request->input('name', 'nanqi1010');
 
         $p_sleep = $this->request->input('sleep', '0');
         if ($p_sleep) {
@@ -96,5 +105,30 @@ class IndexController extends BaseController
             'sleep' => $p_sleep,
             'random' => rand(1, 100000),
         ];
+    }
+
+    /**
+     * @GetMapping(path="test_2")
+     */
+    public function testFile()
+    {
+        $path = $this->request->input('path', "/mnt/data/");
+
+        $fileName = "test.csv";
+        $filePath = $path . $fileName;
+
+        $id = rand(1, 1000000);
+        file_put_contents($filePath, $id . PHP_EOL, FILE_APPEND);
+
+        $res = file_get_contents($filePath);
+        return $res;
+    }
+
+    /**
+     * @GetMapping(path="search")
+     */
+    public function search(CircuitService $circuitService)
+    {
+        return $circuitService->search();
     }
 }
